@@ -2,10 +2,16 @@
 class DatabaseClass {
 
     // configuration variables are here
+//    private $host = "localhost";
+//    private $username = "cp21082_erply";
+//    private $pass = "QXCY_nbU.[wZ";
+//    private $db = "cp21082_erply";
+
     private $host = "localhost";
-    private $username = "cp21082_erply";
-    private $pass = "QXCY_nbU.[wZ";
-    private $db = "cp21082_erply";
+    private $username = "root";
+    private $pass = "";
+    private $db = "erply";
+
     public $connection;
 
     // Try to connect to Database

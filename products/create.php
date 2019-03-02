@@ -11,51 +11,50 @@ $product = new Product($connection);
 
 $error = array();
 $allIsSet = true;
-if($_GET['name']){
+if (!empty($_GET['name'])) {
     $name = $_GET['name'];
-    
-}else{
+} else {
     $allIsSet = false;
-    $p  = "name should be defined !";
+    $p = "name should be defined !";
     array_push($error, $p);
 };
-if($_GET['price']){
+if (!empty($_GET['price'])) {
     $price = $_GET['price'];
-    
-}else{
+} else {
     $allIsSet = false;
-    $p  = "price should be defined !";
+    $p = "price should be defined !";
     array_push($error, $p);
 };
 
-$stmt = $product->create($name,$price);
-if ($stmt[2]){
-    $allIsSet = false;
-    array_push($error, $stmt[2]);
-}
+
 // var_dump($stmt);
 // exit;
-if($stmt && $allIsSet){
+if ($allIsSet) {
+    $stmt = $product->create($name, $price);
+//    var_dump($stmt);
+//    if ($stmt[2]) {
+//        $allIsSet = false;
+//        array_push($error, $stmt[2]);
+//    }
+    if($stmt){
+        $products = array();
+        $products["body"] = array();
+        $products["msg"] = "Successfully inserted.";
+        $products["ERROR"] = false;
 
-    $products = array();
-    $products["body"] = array();
-    $products["msg"] = "Successfully inserted.";
-    $products["ERROR"] = false;
-
-        $p  = array(
-              "ID" => $stmt,
-              "NAME" => $name,
-              "PRICE" => $price
+        $p = array(
+            "ID" => $stmt,
+            "NAME" => $name,
+            "PRICE" => $price
         );
 
         array_push($products["body"], $p);
-    
 
-    echo json_encode($products);
-}
+        echo json_encode($products);
+    }
 
-else {
-    
+} else {
+
 
     echo json_encode(
         array("body" => array(), "ERROR" => $error)

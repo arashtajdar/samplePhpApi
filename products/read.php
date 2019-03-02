@@ -9,36 +9,34 @@ $connection = $dbclass->connect();
 
 $product = new Product($connection);
 
-$length = $_GET['length']?$_GET['length']:1;
-$start = $_GET['start']?$_GET['start']:0;
-$stmt = $product->read($start,$length);
+$length = !empty($_GET['length']) ? $_GET['length'] : 10;
+$start = !empty($_GET['start']) ? $_GET['start'] : 0;
+$stmt = $product->read($start, $length);
 // echo $stmt;
 // exit;
 $count = $stmt->rowCount();
-if($count > 0){
+if ($count > 0) {
 
 
     $products = array();
     $products["body"] = array();
     $products["count"] = $count;
 
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // var_dump($row);
         extract($row);
 
-        $p  = array(
-              "ID" => $ID,
-              "NAME" => $NAME,
-              "PRICE" => $PRICE
+        $p = array(
+            "ID" => $ID,
+            "NAME" => $NAME,
+            "PRICE" => $PRICE
         );
 
         array_push($products["body"], $p);
     }
 
     echo json_encode($products);
-}
-
-else {
+} else {
 
     echo json_encode(
         array("body" => array(), "count" => 0)
