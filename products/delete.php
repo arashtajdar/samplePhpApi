@@ -19,19 +19,22 @@ if (!empty($_GET['id'])) {
     array_push($error, $p);
 };
 
-//if ($stmt[2]) {
-//    $allIsSet = false;
-//    array_push($error, $stmt[2]);
-//}
+
 
 if($allIsSet){
     $stmt = $product->remove($id);
-    if ($stmt == 0) {
-        $allIsSet = false;
+    if ($stmt[2]) {
+        array_push($error, $stmt[2]);
+        echo json_encode(
+            array("body" => array(), "ERROR" => $error)
+        );
+    }else if($stmt == 0) {
         $p = "Id is not in database !";
         array_push($error, $p);
-    }
-    if ($stmt) {
+        echo json_encode(
+            array("body" => array(), "ERROR" => $error)
+        );
+    }else {
 
         $products = array();
         $products["body"] = array();
@@ -46,11 +49,6 @@ if($allIsSet){
 
 
         echo json_encode($products);
-    }else {
-
-        echo json_encode(
-            array("body" => array(), "ERROR" => $error)
-        );
     }
 } else {
 

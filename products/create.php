@@ -25,39 +25,39 @@ if (!empty($_GET['price'])) {
     $p = "price should be defined !";
     array_push($error, $p);
 };
+if (is_numeric($price)){
+    if ($allIsSet) {
+        $stmt = $product->create($name, $price);
+        if($stmt){
+            $products = array();
+            $products["body"] = array();
+            $products["msg"] = "Successfully inserted.";
+            $products["ERROR"] = false;
+
+            $p = array(
+                "ID" => $stmt,
+                "NAME" => $name,
+                "PRICE" => $price
+            );
+
+            array_push($products["body"], $p);
+
+            echo json_encode($products);
+        }
+
+    } else {
 
 
-// var_dump($stmt);
-// exit;
-if ($allIsSet) {
-    $stmt = $product->create($name, $price);
-//    var_dump($stmt);
-//    if ($stmt[2]) {
-//        $allIsSet = false;
-//        array_push($error, $stmt[2]);
-//    }
-    if($stmt){
-        $products = array();
-        $products["body"] = array();
-        $products["msg"] = "Successfully inserted.";
-        $products["ERROR"] = false;
-
-        $p = array(
-            "ID" => $stmt,
-            "NAME" => $name,
-            "PRICE" => $price
+        echo json_encode(
+            array("body" => array(), "ERROR" => $error)
         );
-
-        array_push($products["body"], $p);
-
-        echo json_encode($products);
     }
-
-} else {
-
-
+}else{
+    $p = "price should be numeric !";
+    array_push($error, $p);
     echo json_encode(
         array("body" => array(), "ERROR" => $error)
     );
 }
+
 ?>
