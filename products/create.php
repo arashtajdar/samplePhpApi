@@ -10,53 +10,38 @@ $connection = $dbclass->connect();
 $product = new Product($connection);
 
 $error = array();
-$allIsSet = true;
-if (!empty($_GET['name'])) {
-    $name = $_GET['name'];
-} else {
-    $allIsSet = false;
-    $p = "name should be defined !";
-    array_push($error, $p);
-};
-if (!empty($_GET['price'])) {
-    $price = $_GET['price'];
-} else {
-    $allIsSet = false;
-    $p = "price should be defined !";
-    array_push($error, $p);
-};
-if (is_numeric($price)){
-    if ($allIsSet) {
-        $stmt = $product->create($name, $price);
-        if($stmt){
-            $products = array();
-            $products["body"] = array();
-            $products["msg"] = "Successfully inserted.";
-            $products["ERROR"] = false;
 
-            $p = array(
-                "ID" => $stmt,
-                "NAME" => $name,
-                "PRICE" => $price
-            );
+try{
+    $name = !empty($_GET['name'])?$_GET['name']:null;
+    $price = !empty($_GET['price'])?$_GET['price']:null;
 
-            array_push($products["body"], $p);
-
-            echo json_encode($products);
-        }
-
-    } else {
-
-
-        echo json_encode(
-            array("body" => array(), "ERROR" => $error)
-        );
+    if(!$name && !$price) {
+        throw new Exception("name and price should be defined  !");
+    }else if(!$price) {
+        throw new Exception("Price should be defined  !");
+    }else if(!$name) {
+        throw new Exception("name should be defined  !");
+    }else if(!is_numeric($price)){
+        throw new Exception("Price should be numeric");
     }
-}else{
-    $p = "price should be numeric !";
-    array_push($error, $p);
+    $stmt = $product->create($name, $price);
+    $id = $connection->lastInsertId();
+    $products = array();
+    $products["body"] = array();
+    $products["msg"] = "Successfully inserted.";
+    $products["ERROR"] = false;
+    $p = array(
+        "ID" => $id,
+        "NAME" => $name,
+        "PRICE" => $price
+    );
+    array_push($products["body"], $p);
+    echo json_encode($products);
+
+}catch (Exception $e){
+    array_push($error, $e->getMessage());
     echo json_encode(
-        array("body" => array(), "ERROR" => $error)
+        array("ERROR" => $error)
     );
 }
 

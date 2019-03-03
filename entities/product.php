@@ -26,13 +26,9 @@ class Product
         $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         $result = $this->connection->prepare($query);
         $result->bindValue(':name', $name, PDO::PARAM_STR);
-        if ($result->execute()) {
-            $res = $this->connection->lastInsertId();
-        } else {
-            $res = $result->errorInfo();
-        }
+        $result->execute();
 
-        return $res;
+        return $result;
     }
 
     // Select (READ)
