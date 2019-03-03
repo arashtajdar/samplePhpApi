@@ -56,17 +56,14 @@ class Product
     // Update
     public function update($id, $name, $price)
     {
+        // ToDo : I Should improve this part !!!
         $updateVal = false;
         if ($name) {
-            if ($updateVal) {
-                $updateVal .= ",";
-            }
+            $updateVal .= $updateVal?",":"";
             $updateVal .= " NAME = :name";
         }
         if ($price) {
-            if ($updateVal) {
-                $updateVal .= ",";
-            }
+            $updateVal .= $updateVal?",":"";
             $updateVal .= " PRICE = " . $price;
         }
         $query = "UPDATE " . $this->table . " SET " . $updateVal . " WHERE ID = " . $id;
@@ -74,12 +71,6 @@ class Product
         $result = $this->connection->prepare($query);
         $result->bindValue(':name', $name, PDO::PARAM_STR);
         $result->execute();
-        // if ($result->execute()){ 
-        //     // $res = $this->connection->lastInsertId();
-        //     $res = $result;
-        // }else{
-        //     $res = $result->errorInfo();
-        // }
         return $result;
     }
 
