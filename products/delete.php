@@ -12,7 +12,7 @@ $product = new Product($connection);
 $error = array();
 
 try {
-    $id = $_GET['id'];
+    $id = !empty($_GET['id'])?$_GET['id']:null;
     $stmt = $product->remove($id);
     $count = $stmt->rowCount();
 //    var_dump($stmt);
