@@ -1,5 +1,7 @@
 <?php
-class Product{
+
+class Product
+{
 
     // Specify the table name
     private $table = "PRODUCTS";
@@ -12,62 +14,67 @@ class Product{
     // Instance of connection
     private $conn;
 
-    public function __construct($conn){
+    public function __construct($conn)
+    {
         $this->connection = $conn;
     }
 
     // Insert (CREATE)
-    public function create($name,$price){
-        $query = "INSERT INTO " . $this->table . " SET NAME= :name,PRICE=". $price;
-        $this->connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+    public function create($name, $price)
+    {
+        $query = "INSERT INTO " . $this->table . " SET NAME= :name,PRICE=" . $price;
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         $result = $this->connection->prepare($query);
         $result->bindValue(':name', $name, PDO::PARAM_STR);
-        if ($result->execute()){ 
+        if ($result->execute()) {
             $res = $this->connection->lastInsertId();
-        }else{
+        } else {
             $res = $result->errorInfo();
         }
-        
-        return  $res;
+
+        return $res;
     }
-    
+
     // Select (READ)
-    public function read($limit_start,$length){
-        $query = "SELECT * FROM " . $this->table . " LIMIT " .$limit_start.",".$length;
-        
+    public function read($limit_start, $length)
+    {
+        $query = "SELECT * FROM " . $this->table . " LIMIT " . $limit_start . "," . $length;
+
         $result = $this->connection->prepare($query);
         $result->execute();
-        
+
         return $result;
     }
-    
+
     // SEARCH
-    public function search($limit_start,$length,$name,$price_range){
-        $query = "SELECT * FROM " . $this->table . " WHERE NAME LIKE '%". $name ."%' ". $price_range ." LIMIT " .$limit_start.",".$length;
-        
+    public function search($limit_start, $length, $name, $price_range)
+    {
+        $query = "SELECT * FROM " . $this->table . " WHERE NAME LIKE '%" . $name . "%' " . $price_range . " LIMIT " . $limit_start . "," . $length;
+
         $result = $this->connection->prepare($query);
         $result->execute();
-        
+
         return $result;
     }
-    
+
     // Update
-    public function update($id,$name,$price){
+    public function update($id, $name, $price)
+    {
         $updateVal = false;
-        if($name){
-            if ($updateVal){
+        if ($name) {
+            if ($updateVal) {
                 $updateVal .= ",";
             }
             $updateVal .= " NAME = :name";
         }
-        if($price){
-            if ($updateVal){
+        if ($price) {
+            if ($updateVal) {
                 $updateVal .= ",";
             }
-            $updateVal .= " PRICE = ".$price;
+            $updateVal .= " PRICE = " . $price;
         }
-        $query = "UPDATE " . $this->table . " SET ".$updateVal ." WHERE ID = ".$id;
-        $this->connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
+        $query = "UPDATE " . $this->table . " SET " . $updateVal . " WHERE ID = " . $id;
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         $result = $this->connection->prepare($query);
         $result->bindValue(':name', $name, PDO::PARAM_STR);
         $result->execute();
@@ -77,18 +84,15 @@ class Product{
         // }else{
         //     $res = $result->errorInfo();
         // }
-        return  $result;
+        return $result;
     }
-    
+
     // Delete
-    public function remove($idToDelete){
-        $query = "DELETE FROM " . $this->table . " WHERE ID = ". $idToDelete;
+    public function remove($idToDelete)
+    {
+        $query = "DELETE FROM " . $this->table . " WHERE ID = " . $idToDelete;
         $result = $this->connection->prepare($query);
-        if ($result->execute()){ 
-            $res = $result->rowCount();
-        }else{
-            $res = $result->errorInfo();
-        }
-        return $res;
+        $result->execute();
+        return $result;
     }
 }
