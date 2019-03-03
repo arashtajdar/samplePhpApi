@@ -18,9 +18,9 @@ try {
 //    var_dump($stmt);
     if(!$id) {
         throw new Exception("Id should be defined for deleting !");
-    }else if(!is_numeric($id)){
+    }elseif(!is_numeric($id)){
         throw new Exception("Id should be Numeric !");
-    }else if(!$count) {
+    }elseif(!$count) {
         throw new Exception("Id is not in dataabse");
     }
     $products = array();

@@ -18,9 +18,9 @@ try{
     $id = !empty($_GET['id'])?$_GET['id']:null;
     if(!$id) {
         throw new Exception("id should be defined  !");
-    }else if (!$name && !$price){
+    }elseif (!$name && !$price){
         throw new Exception("at least one value (price or name) should be defined to be updated !");
-    }else if($price && !is_numeric($price)) {
+    }elseif($price && !is_numeric($price)) {
         throw new Exception("price should be numeric !");
     }
 

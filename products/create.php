@@ -17,11 +17,11 @@ try{
 
     if(!$name && !$price) {
         throw new Exception("name and price should be defined  !");
-    }else if(!$price) {
+    }elseif(!$price) {
         throw new Exception("Price should be defined  !");
-    }else if(!$name) {
+    }elseif(!$name) {
         throw new Exception("name should be defined  !");
-    }else if(!is_numeric($price)){
+    }elseif(!is_numeric($price)){
         throw new Exception("Price should be numeric");
     }
     $stmt = $product->create($name, $price);

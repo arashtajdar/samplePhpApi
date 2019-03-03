@@ -8,6 +8,7 @@ $dbclass = new DatabaseClass();
 $connection = $dbclass->connect();
 
 $product = new Product($connection);
+$error = array();
 
 try{
     $length = !empty($_GET['length']) ? $_GET['length'] : 10;
