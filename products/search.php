@@ -1,4 +1,10 @@
 <?php
+/**
+ * @SWG\Get(
+ *     path="/api/v1/search",
+ *     @SWG\Response(response="200", description="To search by name")
+ * )
+ */
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/db.php';

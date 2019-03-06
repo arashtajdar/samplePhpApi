@@ -1,4 +1,17 @@
 <?php
+	/**
+	 *
+	 * @SWG\Get(
+	 * 		path="/api/v1/read",
+	 * 		tags={"products"},
+	 * 		summary="Read all data",
+	 *      @SWG\Response(response="200", description="To search by name"),
+	 *      @SWG\Response(response="401", description="To search by name")
+
+	 * 	)
+	 *
+	 */
+
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../config/db.php';

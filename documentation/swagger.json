@@ -1,0 +1,72 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "PHP SAMPLE API",
+        "description": "This is a sample php api",
+        "contact": {
+            "email": "arashtajdar@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/create": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/v1/delete": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/api/v1/read": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "Read all data",
+                "responses": {
+                    "200": {
+                        "description": "To search by name"
+                    },
+                    "401": {
+                        "description": "To search by name"
+                    }
+                }
+            }
+        },
+        "/api/v1/search": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "To search by name"
+                    }
+                }
+            }
+        },
+        "/api/v1/update": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {},
+    "tags": [
+        {
+            "name": "products",
+            "description": "Acces to products"
+        }
+    ]
+}
