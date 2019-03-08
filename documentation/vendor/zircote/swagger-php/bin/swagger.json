@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "title": "PHP SAMPLE API",
-        "description": "This is a sample php api for Erply assignment",
+        "description": "This is a sample php api",
         "contact": {
             "email": "arashtajdar@gmail.com"
         },

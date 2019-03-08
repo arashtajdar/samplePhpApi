@@ -1,7 +1,7 @@
 <?php
  /**
  * @SWG\Info(
- *     description="This is a sample php api",
+ *     description="This is a sample php api for Erply assignment",
  *     version="1.0.0",
  *     title="PHP SAMPLE API",
  *     @SWG\Contact(
@@ -12,7 +12,7 @@
 /**
  * @SWG\Tag(
  *     name="products",
- *     description="Acces to products",
+ *     description="Acces to products list and do CRUD",
  * )
 
 

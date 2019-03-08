@@ -1,10 +1,10 @@
 {
-    "name": "dataedo/example",
+    "name": "PHP sample Api",
     "type": "project",
     "require": {
         "zircote/swagger-php": "^2.0"
     },
     "scripts": {
-        "docs": "swagger ../products"
+        "docs": "swagger test/"
     }
 }
