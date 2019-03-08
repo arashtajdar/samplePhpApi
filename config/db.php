@@ -9,7 +9,7 @@ class DatabaseClass {
 
     private $host = "localhost";
     private $username = "root";
-    private $pass = "";
+    private $pass = "11111111";
     private $db = "erply";
 
     public $connection;
