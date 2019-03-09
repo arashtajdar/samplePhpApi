@@ -51,7 +51,7 @@ $error = array();
 
 try{
     $length = (!empty($_GET['length']) && $_GET['length'] !== 'undefined') ? $_GET['length'] : 10;
-    $start = (!empty($_GET['start']) && $_GET['length'] !== 'undefined') ? $_GET['start'] : 0;
+    $start = (!empty($_GET['start']) && $_GET['start'] !== 'undefined') ? $_GET['start'] : 0;
     $stmt = $product->read($start, $length);
     $count = $stmt->rowCount();
     if ($length && !is_numeric($length)){
