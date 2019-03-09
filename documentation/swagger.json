@@ -9,54 +9,237 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/v1/create": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "An example resource"
-                    }
-                }
-            }
-        },
-        "/api/v1/delete": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "An example resource"
-                    }
-                }
-            }
-        },
-        "/api/v1/read": {
+        "/samplePhpApi/products/create.php?id={id}&name={name}&price={price}": {
             "get": {
                 "tags": [
                     "products"
                 ],
-                "summary": "Read all data",
-                "responses": {
-                    "200": {
-                        "description": "To search by name"
+                "summary": "edit products",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "new name for this product",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "int32"
+                        }
                     },
-                    "401": {
-                        "description": "To search by name"
+                    {
+                        "name": "price",
+                        "in": "path",
+                        "description": "new price for this product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "ERROR : Not found"
+                    },
+                    "default": {
+                        "description": "unexpected error"
                     }
                 }
             }
         },
-        "/api/v1/search": {
+        "/samplePhpApi/products/delete.php?id={id}": {
             "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "edit products",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of record to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "To search by name"
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "ERROR : Not found"
+                    },
+                    "default": {
+                        "description": "unexpected error"
                     }
                 }
             }
         },
-        "/api/v1/update": {
+        "/samplePhpApi/products/read.php?start={start}&length={length}": {
             "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "List all products",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "path",
+                        "description": "start of records to display (zero based)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "length",
+                        "in": "path",
+                        "description": "length of records",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
-                        "description": "An example resource"
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "ERROR : Not found"
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/samplePhpApi/products/search.php?start={start}&length={length}&name={name}&minPrice={minPrice}&maxPrice={maxPrice}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "search in products",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "path",
+                        "description": "start of records to display (zero based)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "length",
+                        "in": "path",
+                        "description": "length of records",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "search keyword",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "minPrice",
+                        "in": "path",
+                        "description": "minimum price",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "maxPrice",
+                        "in": "path",
+                        "description": "maximum price",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "ERROR : Not found"
+                    },
+                    "default": {
+                        "description": "unexpected error"
+                    }
+                }
+            }
+        },
+        "/samplePhpApi/products/update.php?id={id}&name={name}&price={price}": {
+            "get": {
+                "tags": [
+                    "products"
+                ],
+                "summary": "edit products",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of record you want to edit",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "new name for this product",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "price",
+                        "in": "path",
+                        "description": "new price for this product",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    },
+                    "404": {
+                        "description": "ERROR : Not found"
+                    },
+                    "default": {
+                        "description": "unexpected error"
                     }
                 }
             }

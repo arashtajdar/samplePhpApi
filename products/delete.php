@@ -1,8 +1,31 @@
 <?php
 /**
  * @SWG\Get(
- *     path="/api/v1/delete",
- *     @SWG\Response(response="200", description="An example resource")
+ *     path="/samplePhpApi/products/delete.php?id={id}",
+ *     summary="edit products",
+ *     tags={"products"},
+ *     @SWG\Parameter(
+ *         name="id",
+ *         in="path",
+ *         description="Id of record to delete",
+ *         required=true,
+ *         @SWG\Schema(
+ *             type="integer",
+ *             format="int32"
+ *         )
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="ok"
+ *     ),
+ *     @SWG\Response(
+ *         response=404,
+ *         description="ERROR : Not found"
+ *     ),
+ *     @SWG\Response(
+ *         response="default",
+ *         description="unexpected error"
+ *     )
  * )
  */
 header("Content-Type: application/json; charset=UTF-8");

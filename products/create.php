@@ -1,8 +1,41 @@
 <?php
 /**
  * @SWG\Get(
- *     path="/api/v1/create",
- *     @SWG\Response(response="200", description="An example resource")
+ *     path="/samplePhpApi/products/create.php?id={id}&name={name}&price={price}",
+ *     summary="edit products",
+ *     tags={"products"},
+ *     @SWG\Parameter(
+ *         name="name",
+ *         in="path",
+ *         description="new name for this product",
+ *         required=true,
+ *         @SWG\Schema(
+ *             type="string",
+ *             format="int32"
+ *         )
+ *     ),
+ *     @SWG\Parameter(
+ *         name="price",
+ *         in="path",
+ *         description="new price for this product",
+ *         required=true,
+ *         @SWG\Schema(
+ *             type="integer",
+ *             format="int32"
+ *         )
+ *     ),
+ *     @SWG\Response(
+ *         response=200,
+ *         description="ok"
+ *     ),
+ *     @SWG\Response(
+ *         response=404,
+ *         description="ERROR : Not found"
+ *     ),
+ *     @SWG\Response(
+ *         response="default",
+ *         description="unexpected error"
+ *     )
  * )
  */
 header("Content-Type: application/json; charset=UTF-8");
