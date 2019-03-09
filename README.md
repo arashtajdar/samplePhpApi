@@ -15,5 +15,8 @@ It was an assignment from ERPLY Point of Sale Software.
    1. change swagger codes
    2. run this code in cmd (in documentation folder) or simply execute documentation/runSwagger.sh
    > composer run docs
+# backLog
+* routing
+* UI (simple index.html and some ajax calls)
    
    
