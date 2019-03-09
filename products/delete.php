@@ -21,7 +21,6 @@ try {
     $id = !empty($_GET['id'])?$_GET['id']:null;
     $stmt = $product->remove($id);
     $count = $stmt->rowCount();
-//    var_dump($stmt);
     if(!$id) {
         throw new Exception("Id should be defined for deleting !");
     }elseif(!is_numeric($id)){
@@ -46,4 +45,3 @@ catch(Exception $e) {
         array("body" => array(), "ERROR" => $error)
     );
 }
-?>
