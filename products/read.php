@@ -2,7 +2,7 @@
 /**
  * @SWG\Get(
  *     path="/samplePhpApi/products/read.php?start={start}&length={length}",
- *     summary="List all products",
+ *     summary="List products",
  *     tags={"products"},
  *     @SWG\Parameter(
  *         name="start",

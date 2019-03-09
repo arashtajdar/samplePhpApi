@@ -2,7 +2,7 @@
 /**
  * @SWG\Get(
  *     path="/samplePhpApi/products/create.php?id={id}&name={name}&price={price}",
- *     summary="edit products",
+ *     summary="add new product",
  *     tags={"products"},
  *     @SWG\Parameter(
  *         name="name",
@@ -10,8 +10,7 @@
  *         description="new name for this product",
  *         required=true,
  *         @SWG\Schema(
- *             type="string",
- *             format="int32"
+ *             type="string"
  *         )
  *     ),
  *     @SWG\Parameter(

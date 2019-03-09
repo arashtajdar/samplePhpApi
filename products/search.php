@@ -30,8 +30,7 @@
  *         description="search keyword",
  *         required=true,
  *         @SWG\Schema(
- *             type="integer",
- *             format="int32"
+ *             type="string"
  *         )
  *     ),
  *     @SWG\Parameter(

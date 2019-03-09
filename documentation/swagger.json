@@ -14,7 +14,7 @@
                 "tags": [
                     "products"
                 ],
-                "summary": "edit products",
+                "summary": "add new product",
                 "parameters": [
                     {
                         "name": "name",
@@ -22,8 +22,7 @@
                         "description": "new name for this product",
                         "required": true,
                         "schema": {
-                            "type": "string",
-                            "format": "int32"
+                            "type": "string"
                         }
                     },
                     {
@@ -55,7 +54,7 @@
                 "tags": [
                     "products"
                 ],
-                "summary": "edit products",
+                "summary": "delete products by ID",
                 "parameters": [
                     {
                         "name": "id",
@@ -86,7 +85,7 @@
                 "tags": [
                     "products"
                 ],
-                "summary": "List all products",
+                "summary": "List products",
                 "parameters": [
                     {
                         "name": "start",
@@ -155,8 +154,7 @@
                         "description": "search keyword",
                         "required": true,
                         "schema": {
-                            "type": "integer",
-                            "format": "int32"
+                            "type": "string"
                         }
                     },
                     {
@@ -216,8 +214,7 @@
                         "description": "new name for this product",
                         "required": false,
                         "schema": {
-                            "type": "integer",
-                            "format": "int32"
+                            "type": "string"
                         }
                     },
                     {

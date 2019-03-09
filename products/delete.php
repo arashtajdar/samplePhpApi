@@ -2,7 +2,7 @@
 /**
  * @SWG\Get(
  *     path="/samplePhpApi/products/delete.php?id={id}",
- *     summary="edit products",
+ *     summary="delete products by ID",
  *     tags={"products"},
  *     @SWG\Parameter(
  *         name="id",

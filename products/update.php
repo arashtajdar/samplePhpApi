@@ -20,8 +20,7 @@
  *         description="new name for this product",
  *         required=false,
  *         @SWG\Schema(
- *             type="integer",
- *             format="int32"
+ *             type="string"
  *         )
  *     ),
  *     @SWG\Parameter(
